@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 import { ErrorContext } from '../Context';
 import {GalleryContainer} from '../Styled-Utilities/Styles';
 import Masonry from 'react-masonry-component'
@@ -16,7 +16,7 @@ const MyPins = () => {
         fitWidth: true,
     };
 
-    // const { user } = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const { handleError } = useContext(ErrorContext);
     const history = useHistory();
 
@@ -41,6 +41,10 @@ const MyPins = () => {
         }
         fetchPins();
     }, [handleError, history])
+
+    if(!user){
+        return <Redirect to='/login' />
+    }
 
     if (!pins) {
         return <div>Loading...</div>
