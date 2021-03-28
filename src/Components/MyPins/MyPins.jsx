@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { Redirect, useHistory } from 'react-router';
-import { ErrorContext } from '../Context';
+import UserContext,{ ErrorContext } from '../Context';
 import {GalleryContainer} from '../Styled-Utilities/Styles';
 import Masonry from 'react-masonry-component'
 import Pin from '../Pin/Pin';
