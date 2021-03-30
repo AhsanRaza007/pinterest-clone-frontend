@@ -4,6 +4,7 @@ import styled from 'styled-components';
 // import UserContext, { ErrorContext } from '../Context';
 
 
+
 const OverallPin = styled.div`
     width: 236px;
     margin: 0px 5px;
@@ -82,6 +83,13 @@ const Pin = ({ pin }) => {
     const openPin = () => {
         history.push(`/pin/${pin._id}`)
     }
+
+    try{
+        new URL(pin.destination)
+    }catch(err){
+        pin.destination = 'https://' + pin.destination;
+    }
+
     return (
         <OverallPin >
             <PinContainer className={pin.size} onClick={openPin} title="Open Pin">

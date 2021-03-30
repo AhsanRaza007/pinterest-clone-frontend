@@ -29,7 +29,7 @@ const Home = () => {
     useEffect(() => {
         let fetchPins = async () => {
             try {
-                let res = await axios.get(process.env.REACT_APP_BACKEND_URL+'/pin');
+                let res = await axios.get((process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_DEV_BACKEND_URL)+'/pin');
                 console.log('in useeffect')
                 setPins(res.data);
             } catch (err) {

@@ -25,7 +25,7 @@ function App() {
     let fetchUser = async () => {
       console.log('in use effect')
       try {
-        let res = await axios.get(process.env.REACT_APP_BACKEND_URL + '/auth', {
+        let res = await axios.get((process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_DEV_BACKEND_URL) + '/auth', {
           headers: {
             authorization: 'Bearer ' + localStorage.getItem('token')
           }

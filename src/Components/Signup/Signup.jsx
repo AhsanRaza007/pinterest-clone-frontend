@@ -28,7 +28,7 @@ const Signup = () => {
         }
         else{
             try{
-                let res = await axios.post(process.env.REACT_APP_BACKEND_URL+'/user/register', {
+                let res = await axios.post((process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_DEV_BACKEND_URL)+'/user/register', {
                     "email": email,
                     "name": username,
                     "password": password

@@ -119,9 +119,10 @@ const PinView = () => {
     const {handleSuccess} = useContext(SuccessContext);
 
     useEffect(()=>{
+        console.log('in pin view')
         let fetchPin = async ()=>{
             try{
-                let res = await axios.get(process.env.REACT_APP_BACKEND_URL+`/pin/${pinId}`);
+                let res = await axios.get((process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_DEV_BACKEND_URL)+`/pin/${pinId}`);
                 setPin(res.data);
             }catch(err){
                 console.log(err);
@@ -129,12 +130,12 @@ const PinView = () => {
             }
         }
         fetchPin();
-    }, [pin, pinId, handleError])
+    }, [pinId,handleError])
 
 
     const handleSave = async () =>{
         try{
-            let res = await axios.get(process.env.REACT_APP_BACKEND_URL+`/pin/save/${pinId}`, {
+            let res = await axios.get((process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_DEV_BACKEND_URL)+`/pin/save/${pinId}`, {
                 headers: {
                     authorization: 'Bearer ' + localStorage.getItem('token')
                 }

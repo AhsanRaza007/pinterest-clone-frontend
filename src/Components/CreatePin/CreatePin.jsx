@@ -114,7 +114,7 @@ const CreatePin = () => {
                 formdata.append("description", description);
                 formdata.append("destination", destination);
                 formdata.append("size", size);
-                let res = await axios.post(process.env.REACT_APP_BACKEND_URL+'/pin/create', formdata, {
+                let res = await axios.post((process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_DEV_BACKEND_URL)+'/pin/create', formdata, {
                     headers: {
                         'authorization': 'Bearer ' + localStorage.getItem('token')
                         // 'Content-Type': 'multipart/form-data'

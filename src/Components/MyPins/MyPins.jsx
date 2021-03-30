@@ -25,7 +25,7 @@ const MyPins = () => {
     useEffect(() => {
         let fetchPins = async () => {
             try {
-                let res = await axios.get(process.env.REACT_APP_BACKEND_URL+'/pin/user', {
+                let res = await axios.get((process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_DEV_BACKEND_URL)+'/pin/user', {
                     headers: {
                         authorization: 'Bearer ' + localStorage.getItem('token')
                     }

@@ -19,7 +19,7 @@ const Login = (props) => {
             handleError('All fields are required!!');
         }else{
             try{
-                let res = await axios.post(process.env.REACT_APP_BACKEND_URL + '/user/login', {
+                let res = await axios.post((process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_DEV_BACKEND_URL) + '/user/login', {
                     "email" : email,
                     "password" : password
                 });
